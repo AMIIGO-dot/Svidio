@@ -1,1 +1,1 @@
-export { MockVideoClient } from './mock';
+export { MockVideoClient } from './mock.js';

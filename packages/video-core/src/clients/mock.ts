@@ -4,7 +4,7 @@ import type {
   RoomEvent,
   VideoTrack,
 } from '@svidio/types';
-import type { VideoClient, RoomEventHandler } from '../types';
+import type { VideoClient, RoomEventHandler } from '../types.js';
 
 export class MockVideoClient implements VideoClient {
   private state: ConnectionState = 'disconnected';
