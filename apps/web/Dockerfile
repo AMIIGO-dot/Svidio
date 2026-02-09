@@ -17,6 +17,7 @@ COPY packages/video-core ./packages/video-core
 COPY packages/ui ./packages/ui
 COPY apps/web ./apps/web
 RUN cd packages/types && npm run build
+RUN cd packages/video-core && npm run build
 RUN cd apps/web && npm run build
 
 FROM base AS web
