@@ -16,7 +16,8 @@ COPY packages/types ./packages/types
 COPY packages/video-core ./packages/video-core
 COPY packages/ui ./packages/ui
 COPY apps/web ./apps/web
-RUN npm run build -w packages/types && npm run build -w apps/web
+RUN cd packages/types && npm run build
+RUN cd apps/web && npm run build
 
 FROM base AS web
 COPY --from=web-build /app/apps/web/.next/standalone ./

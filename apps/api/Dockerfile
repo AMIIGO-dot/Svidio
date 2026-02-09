@@ -14,6 +14,8 @@ COPY tsconfig.base.json ./
 COPY packages/types ./packages/types
 COPY packages/video-core ./packages/video-core
 COPY apps/api ./apps/api
-RUN npm run build -w packages/types && npm run build -w packages/video-core && npm run build -w apps/api
+RUN cd packages/types && npm run build
+RUN cd packages/video-core && npm run build
+RUN cd apps/api && npm run build
 EXPOSE 4000
 CMD ["node", "apps/api/dist/index.js"]
