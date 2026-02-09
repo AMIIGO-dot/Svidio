@@ -55,7 +55,7 @@ meetingRouter.post('/', (req: Request, res: Response) => {
 });
 
 meetingRouter.get('/:id/validate', (req: Request, res: Response) => {
-  const meeting = getMeeting(req.params.id);
+  const meeting = getMeeting(String(req.params.id));
 
   if (!meeting) {
     const response: ApiResponse<ValidateMeetingResponse> = {
@@ -78,7 +78,7 @@ meetingRouter.get('/:id/validate', (req: Request, res: Response) => {
 
 meetingRouter.post('/:id/join', (req: Request, res: Response) => {
   const body = req.body as JoinMeetingRequest;
-  const meeting = getMeeting(req.params.id);
+  const meeting = getMeeting(String(req.params.id));
 
   if (!meeting) {
     const response: ApiResponse<never> = {
