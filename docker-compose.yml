@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - SVIDIO_API_PORT=4000
+      - SVIDIO_JWT_SECRET=change-me-in-production
+      - SVIDIO_MEETING_TTL_HOURS=24
+      - SVIDIO_WEB_ORIGIN=http://localhost:3000
+    volumes:
+      - api-data:/app/apps/api/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:4000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  api-data:

@@ -1,0 +1,1 @@
+export { MockVideoProvider } from './mock';
