@@ -22,6 +22,6 @@ RUN cd apps/web && npm run build
 FROM base AS web
 COPY --from=web-build /app/apps/web/.next/standalone ./
 COPY --from=web-build /app/apps/web/.next/static ./apps/web/.next/static
-COPY --from=web-build /app/apps/web/public ./apps/web/public
 EXPOSE 3000
+ENV NODE_ENV=production
 CMD ["node", "apps/web/server.js"]
